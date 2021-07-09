@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HalamanBarang">
+    tools:context=".Barang">
 
     <SearchView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:background="#448AFF" />
+        android:background="@color/black" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,14 +71,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginTop="20sp"
-                    android:gravity="end"
-                    >
+                    android:gravity="end">
                     <Button
                         android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:text="Buy"
-                        android:textSize="8sp"
-                        />
+                        android:textSize="8sp" />
                 </LinearLayout>
 
 
