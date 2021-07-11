@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.example.butikmodisteshofi">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/politani"
@@ -11,7 +14,7 @@
         android:theme="@style/Theme.ButikModisteShofi">
         <activity android:name=".Login"/>
         <activity android:name=".LihatRiwayatPembelian" />
-        <activity android:name=".Barang" />
+        <activity android:name=".SplashActivity" />
         <activity android:name=".Notifikasi" />
         <activity android:name=".RiwayatPembelian" />
         <activity android:name=".Beranda" />
@@ -19,7 +22,7 @@
         <activity android:name=".TransaksiPembelian" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".Barang">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
