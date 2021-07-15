@@ -1,18 +1,23 @@
 package id.example.butikmodisteshofi.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import id.example.butikmodisteshofi.R;
+import id.example.butikmodisteshofi.TransaksiPembelian;
 import id.example.butikmodisteshofi.model.DataItem;
 
 public class AdapterBarang  extends RecyclerView.Adapter<AdapterBarang.BarangView>{
@@ -39,6 +44,9 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
         holder.NamaBarang.setText(dataItems.get(position).getNamaBarang());
         holder.Harga.setText(dataItems.get(position).getHarga());
         holder.Stok.setText(dataItems.get(position).getStokBarang());
+
+        Picasso.get().load("https://rrh.tikblksamarinda.com/img/barang/"+dataItems.get(position).getFoto())
+                .into(holder.foto);
     }
 
     @Override
@@ -49,6 +57,7 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
     public class BarangView extends RecyclerView.ViewHolder {
         public TextView NamaBarang, Harga, Stok;
         public View view;
+        public ImageView foto;
 
         public BarangView(@NonNull View itemView) {
             super(itemView);
@@ -56,14 +65,24 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
             NamaBarang = itemView.findViewById(R.id.nama);
             Harga = itemView.findViewById(R.id.harga);
             Stok = itemView.findViewById(R.id.stok);
+            foto = itemView.findViewById(R.id.foto);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int pos = getAdapterPosition();
-                    Toast.makeText(context,"Terklik" + pos, Toast.LENGTH_SHORT).show();
+                 int posi =getAdapterPosition();
+                 if (posi != RecyclerView.NO_POSITION){
+                     Intent transaksiPembelian = new Intent(context, TransaksiPembelian.class);
+                     transaksiPembelian.putExtra("nama_barang",dataItems.get(posi).getNamaBarang());
+                     transaksiPembelian.putExtra("ukuran",dataItems.get(posi).getUkuran());
+                     transaksiPembelian.putExtra("warna",dataItems.get(posi).getWarna());
+
+
+
+                 }
                 }
             });
+
         }
     }
 }

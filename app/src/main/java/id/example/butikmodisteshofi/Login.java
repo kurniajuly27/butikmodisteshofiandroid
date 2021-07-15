@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
                 String usernameKey = username.getText().toString();
                 String passwordKey = password.getText().toString();
 
-                if (usernameKey.equals("modiste") && passwordKey.equals("12345")) {
+                if (usernameKey.equals("123") && passwordKey.equals("123")) {
                     //jika login berhasil
                     Toast.makeText(getApplicationContext(), "LOGIN SUKSES", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, Beranda.class );

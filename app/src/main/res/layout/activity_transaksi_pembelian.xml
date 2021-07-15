@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-2dp"
         android:orientation="vertical">
 
         <TextView
@@ -19,8 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="Transaksi Penjualan"
-            android:textColor="@color/black"
+            android:layout_marginBottom="20dp"
+            android:text="Transaksi Pembelian"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -31,7 +33,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="5sp"
             android:layout_marginBottom="1sp"
-            android:background="@color/black" />
+            android:background="@color/white" />
 
         <TextView
             android:id="@+id/nama_barang"
@@ -47,9 +49,11 @@
 
         <EditText
             android:id="@+id/txt_nama_barang"
-            android:layout_width="440dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:enabled="false"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/ukuran"
@@ -63,8 +67,9 @@
 
         <EditText
             android:id="@+id/txt_ukuran"
-            android:layout_width="440dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:layout_margin="10dp" />
 
         <TextView
@@ -79,8 +84,9 @@
 
         <EditText
             android:id="@+id/txt_warna"
-            android:layout_width="440dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:layout_margin="10dp" />
 
         <TextView
@@ -95,7 +101,7 @@
 
         <EditText
             android:id="@+id/txt_jumlah_barang"
-            android:layout_width="440dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp" />
 
@@ -111,7 +117,7 @@
 
         <EditText
             android:id="@+id/txt_total_Pesanan"
-            android:layout_width="440dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp" />
 

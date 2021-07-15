@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="Beranda"
                 android:textSize="55sp"
@@ -43,12 +43,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:onClick="barang"
-                android:src="@drawable/jjjj" /><![CDATA[
-
-            "
-                android:textStyle="bold" />
-
-            ]]>
+                android:src="@drawable/jjjj"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/btn_barang"
@@ -58,9 +54,9 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="Barang"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/image"
@@ -78,7 +74,7 @@
                 android:gravity="center"
                 android:text="Transaksi Pembelian"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <ImageView
@@ -97,7 +93,7 @@
                 android:gravity="center"
                 android:text="Riwayat Pembelian"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
 

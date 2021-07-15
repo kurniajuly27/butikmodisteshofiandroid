@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/politani"
@@ -12,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ButikModisteShofi">
-        <activity android:name=".Login"/>
+        <activity android:name=".Keranjang_Pembelian"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".LihatRiwayatPembelian" />
-        <activity android:name=".SplashActivity" />
+        <activity android:name=".Barang" />
         <activity android:name=".Notifikasi" />
         <activity android:name=".RiwayatPembelian" />
         <activity android:name=".Beranda" />
@@ -22,7 +22,7 @@
         <activity android:name=".TransaksiPembelian" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Barang">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
