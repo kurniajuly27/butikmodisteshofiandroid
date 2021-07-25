@@ -29,6 +29,8 @@ public class TransaksiPembelian extends AppCompatActivity {
     int jumlah;
     Button btnBeli;
     EditText namaBarangEt, ukuranEt, warnaEt, jumlahET;
+
+
     Date currentTime = Calendar.getInstance().getTime();
     SimpleDateFormat simpleDateFormat =
             new SimpleDateFormat("yyyy-MM-dd");
@@ -46,7 +48,7 @@ public class TransaksiPembelian extends AppCompatActivity {
         ukuran = getIntent().getExtras().getString("ukuran");
         warna = getIntent().getExtras().getString("warna");
 
-        idBarang = getIntent().getExtras().getInt("warna");
+        idBarang = getIntent().getExtras().getInt("id");
 
         namaBarangEt = findViewById(R.id.txt_nama_barang);
         ukuranEt = findViewById(R.id.txt_ukuran);
@@ -59,11 +61,9 @@ public class TransaksiPembelian extends AppCompatActivity {
         warnaEt.setText(warna);
 
 
-        String value = jumlahET.getText().toString();
 
-        if (!"".equals(value)){
-            jumlah = Integer.parseInt(value);
-        }
+//        if (!"".equals(value)){
+//        }
 
         btnBeli = (Button)findViewById(R.id.btn_beli);
 
@@ -94,7 +94,31 @@ public class TransaksiPembelian extends AppCompatActivity {
                                 if(response.isSuccessful()){
                                     List<DataItem> penjualan = response.body().getData();
                                     DataItem item = penjualan.get(penjualan.size() - 1);
-                                    idPenjualan = item.getPenjualan_id();
+                                    idPenjualan = item.getId();
+
+                                    String value = jumlahET.getText().toString();
+                                    jumlah = Integer.parseInt(value);
+
+                                    Call<ResponseAllDetailPenjualan> responseAllDetailPenjualanCall = apiEndPoint.
+                                            setDetailPenjualan(idPenjualan,1,idBarang,jumlah,jumlah);
+
+                                    responseAllDetailPenjualanCall.enqueue(new Callback<ResponseAllDetailPenjualan>() {
+                                        @Override
+                                        public void onResponse(Call<ResponseAllDetailPenjualan> call, Response<ResponseAllDetailPenjualan> response) {
+                                            if (response.isSuccessful()){
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<ResponseAllDetailPenjualan> call, Throwable t) {
+
+                                        }
+                                    });
+
+                                    Toast.makeText(getApplicationContext(), " masuk " + idPenjualan + " " +
+                                                    idBarang + " " + jumlah
+                                            , Toast.LENGTH_SHORT).show();
+
                                     // sudah mendapatakan last id penjualan
                                 }
                             }
@@ -106,6 +130,8 @@ public class TransaksiPembelian extends AppCompatActivity {
                         });
                     }
                 });
+
+
 
                 //Call<ResponseAllDetailPenjualan> res = apiEndPoint.setDetailPenjualan(idPenjualan, 1, idBarang,)
             }

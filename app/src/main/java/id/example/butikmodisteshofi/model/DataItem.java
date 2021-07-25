@@ -34,6 +34,24 @@ public class DataItem{
 	@SerializedName("stok_barang")
 	private String stokBarang;
 
+	@SerializedName("penjualan_id")
+	private int penjualanid;
+
+	@SerializedName("pelanggan_id")
+	private int pelangganid;
+
+	@SerializedName("barang_id")
+	private int barangid;
+
+	@SerializedName("jumlah")
+	private int jumlah;
+
+	@SerializedName("total")
+	private int total;
+
+	@SerializedName("tanggal")
+	private String tanggal;
+
 	public void setUkuran(String ukuran){
 		this.ukuran = ukuran;
 	}
@@ -128,6 +146,60 @@ public class DataItem{
 			",nama_barang = '" + namaBarang + '\'' +
 			",id = '" + id + '\'' +
 			",stok_barang = '" + stokBarang + '\'' +
+			",penjualan_id = '" + penjualanid + '\'' +
+			",pelanggan_id = '" + pelangganid + '\'' +
+			",barang_id = '" + barangid +'\'' +
+			",jumlah = '" + jumlah +'\'' +
+			",total = '" + total + '\'' +
+			",tanggal = '" + tanggal + '\'' +
 			"}";
 		}
+
+	public int getPenjualanid() {
+		return penjualanid;
+	}
+
+	public void setPenjualanid(int penjualanid) {
+		this.penjualanid = penjualanid;
+	}
+
+	public int getPelangganid() {
+		return pelangganid;
+	}
+
+	public void setPelangganid(int pelangganid) {
+		this.pelangganid = pelangganid;
+	}
+
+	public int getBarangid() {
+		return barangid;
+	}
+
+	public void setBarangid(int barangid) {
+		this.barangid = barangid;
+	}
+
+	public int getJumlah() {
+		return jumlah;
+	}
+
+	public void setJumlah(int jumlah) {
+		this.jumlah = jumlah;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public String getTanggal() {
+		return tanggal;
+	}
+
+	public void setTanggal(String tanggal) {
+		this.tanggal = tanggal;
+	}
 }
