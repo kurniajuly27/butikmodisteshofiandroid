@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import id.example.butikmodisteshofi.Beranda;
+import id.example.butikmodisteshofi.Login;
 import id.example.butikmodisteshofi.R;
 import id.example.butikmodisteshofi.TransaksiPembelian;
 import id.example.butikmodisteshofi.model.DataItem;
@@ -59,7 +61,7 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
         public View view;
         public ImageView foto;
 
-        public BarangView(@NonNull View itemView) {
+        public BarangView(View itemView) {
             super(itemView);
             view = itemView;
             NamaBarang = itemView.findViewById(R.id.nama);
@@ -67,18 +69,21 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
             Stok = itemView.findViewById(R.id.stok);
             foto = itemView.findViewById(R.id.foto);
 
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                  int posi =getAdapterPosition();
                  if (posi != RecyclerView.NO_POSITION){
                      Intent transaksiPembelian = new Intent(context, TransaksiPembelian.class);
+
+                     transaksiPembelian.putExtra("id",dataItems.get(posi).getId());
                      transaksiPembelian.putExtra("nama_barang",dataItems.get(posi).getNamaBarang());
                      transaksiPembelian.putExtra("ukuran",dataItems.get(posi).getUkuran());
                      transaksiPembelian.putExtra("warna",dataItems.get(posi).getWarna());
+                     transaksiPembelian.addFlags(transaksiPembelian.FLAG_ACTIVITY_NEW_TASK);
 
-
-
+                     context.startActivity(transaksiPembelian);
                  }
                 }
             });

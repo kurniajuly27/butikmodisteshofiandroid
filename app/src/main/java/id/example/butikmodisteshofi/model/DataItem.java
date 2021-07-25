@@ -34,9 +34,6 @@ public class DataItem{
 	@SerializedName("stok_barang")
 	private String stokBarang;
 
-	@SerializedName("deleted_at")
-	private Object deletedAt;
-
 	public void setUkuran(String ukuran){
 		this.ukuran = ukuran;
 	}
@@ -117,29 +114,20 @@ public class DataItem{
 		return stokBarang;
 	}
 
-	public void setDeletedAt(Object deletedAt){
-		this.deletedAt = deletedAt;
-	}
-
-	public Object getDeletedAt(){
-		return deletedAt;
-	}
-
 	@Override
  	public String toString(){
-		return 
-			"DataItem{" + 
-			"ukuran = '" + ukuran + '\'' + 
-			",warna = '" + warna + '\'' + 
-			",harga_agen = '" + hargaAgen + '\'' + 
-			",harga = '" + harga + '\'' + 
-			",foto = '" + foto + '\'' + 
-			",updated_at = '" + updatedAt + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
-			",nama_barang = '" + namaBarang + '\'' + 
-			",id = '" + id + '\'' + 
-			",stok_barang = '" + stokBarang + '\'' + 
-			",deleted_at = '" + deletedAt + '\'' + 
+		return
+			"DataItem{" +
+			"ukuran = '" + ukuran + '\'' +
+			",warna = '" + warna + '\'' +
+			",harga_agen = '" + hargaAgen + '\'' +
+			",harga = '" + harga + '\'' +
+			",foto = '" + foto + '\'' +
+			",updated_at = '" + updatedAt + '\'' +
+			",created_at = '" + createdAt + '\'' +
+			",nama_barang = '" + namaBarang + '\'' +
+			",id = '" + id + '\'' +
+			",stok_barang = '" + stokBarang + '\'' +
 			"}";
 		}
 }
