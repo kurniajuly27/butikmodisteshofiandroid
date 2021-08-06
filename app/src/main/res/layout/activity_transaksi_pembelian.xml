@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".TransaksiPembelian">
 
     <LinearLayout
@@ -106,23 +107,6 @@
 
             android:inputType="number"
             android:text="0" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="40dp"
-            android:hint="Total Pesanan"
-            android:textSize="15dp"
-            android:textStyle="bold"/>
-
-        <EditText
-            android:id="@+id/txt_total_Pesanan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:inputType="number"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"

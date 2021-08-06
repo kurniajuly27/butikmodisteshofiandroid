@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DetailTransaksiPembelin extends AppCompatActivity {
+public class DetailPenjualan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_transaksi_pembelian);
+        setContentView(R.layout.activity_detail_penjualan);
     }
 }

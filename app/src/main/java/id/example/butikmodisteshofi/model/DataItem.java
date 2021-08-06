@@ -14,7 +14,7 @@ public class DataItem{
 	private String hargaAgen;
 
 	@SerializedName("harga")
-	private String harga;
+	private int harga;
 
 	@SerializedName("foto")
 	private String foto;
@@ -32,7 +32,7 @@ public class DataItem{
 	private int id;
 
 	@SerializedName("stok_barang")
-	private String stokBarang;
+	private int stokBarang;
 
 	@SerializedName("penjualan_id")
 	private int penjualanid;
@@ -51,6 +51,32 @@ public class DataItem{
 
 	@SerializedName("tanggal")
 	private String tanggal;
+
+	//Pelanggan
+	@SerializedName("nama")
+	private String nama;
+
+	@SerializedName("no_hp")
+	private String no_hp;
+
+	@SerializedName("email")
+	private String email;
+
+	@SerializedName("alamat")
+	private String alamat;
+
+	@SerializedName("user_name")
+	private String user_name;
+
+	@SerializedName("password")
+	private String password;
+
+	@SerializedName("konfirmasi_password")
+	private String konfirmasi_password;
+
+
+
+
 
 	public void setUkuran(String ukuran){
 		this.ukuran = ukuran;
@@ -76,11 +102,11 @@ public class DataItem{
 		return hargaAgen;
 	}
 
-	public void setHarga(String harga){
+	public void setHarga(int harga){
 		this.harga = harga;
 	}
 
-	public String getHarga(){
+	public int getHarga(){
 		return harga;
 	}
 
@@ -124,11 +150,11 @@ public class DataItem{
 		return id;
 	}
 
-	public void setStokBarang(String stokBarang){
+	public void setStokBarang(int stokBarang){
 		this.stokBarang = stokBarang;
 	}
 
-	public String getStokBarang(){
+	public int getStokBarang(){
 		return stokBarang;
 	}
 
@@ -152,6 +178,14 @@ public class DataItem{
 			",jumlah = '" + jumlah +'\'' +
 			",total = '" + total + '\'' +
 			",tanggal = '" + tanggal + '\'' +
+			",nama = '"	+ nama + '\''+
+			",no_hp = '" +	no_hp + '\'' +
+			",email = '" + email + '\'' +
+			",alamat = '" +	alamat +'\'' +
+			",username = '" + user_name + '\'' +
+			",password = '" + password + '\'' +
+			",konfirmasi_password = '" + konfirmasi_password + '\'' +
+
 			"}";
 		}
 
@@ -202,4 +236,36 @@ public class DataItem{
 	public void setTanggal(String tanggal) {
 		this.tanggal = tanggal;
 	}
+
+	public String getNama() {
+		return nama;
+	}
+
+	public void setNama(String nama) {
+		this.nama = nama;
+	}
+
+	public String getNo_hp() { return no_hp; }
+
+	public void setNo_hp(String no_hp) { this.no_hp = no_hp; }
+
+	public String getEmail() { return email; }
+
+	public void setEmail(String email) { this.email = email; }
+
+	public String getAlamat() { return alamat; }
+
+	public void setAlamat(String alamat) { this.alamat = alamat; }
+
+	public String getUser_name() { return user_name; }
+
+	public void setUser_name(String user_name) { this.user_name = user_name; }
+
+	public String getPassword() { return password; }
+
+	public void setPassword(String password) { this.password = password; }
+
+	public String getKonfirmasi__password() { return konfirmasi_password; }
+
+	public void setKonfirmasi_password(String konfirmasi_password) { this.konfirmasi_password = konfirmasi_password; }
 }

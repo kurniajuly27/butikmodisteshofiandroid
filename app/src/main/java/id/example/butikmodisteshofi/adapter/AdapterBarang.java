@@ -1,5 +1,6 @@
 package id.example.butikmodisteshofi.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -44,8 +45,8 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
     @Override
     public void onBindViewHolder(@NonNull AdapterBarang.BarangView holder, int position) {
         holder.NamaBarang.setText(dataItems.get(position).getNamaBarang());
-        holder.Harga.setText(dataItems.get(position).getHarga());
-        holder.Stok.setText(dataItems.get(position).getStokBarang());
+        holder.Harga.setText(String.valueOf(dataItems.get(position).getHarga()));
+        holder.Stok.setText(String.valueOf(dataItems.get(position).getStokBarang()));
 
         Picasso.get().load("https://rrh.tikblksamarinda.com/img/barang/"+dataItems.get(position).getFoto())
                 .into(holder.foto);
@@ -79,11 +80,14 @@ public AdapterBarang(List<DataItem> dataItems, int rowLayout, Context context){
 
                      transaksiPembelian.putExtra("id",dataItems.get(posi).getId());
                      transaksiPembelian.putExtra("nama_barang",dataItems.get(posi).getNamaBarang());
+                     transaksiPembelian.putExtra("harga",dataItems.get(posi).getHarga());
+                     transaksiPembelian.putExtra("stok",dataItems.get(posi).getStokBarang());
                      transaksiPembelian.putExtra("ukuran",dataItems.get(posi).getUkuran());
                      transaksiPembelian.putExtra("warna",dataItems.get(posi).getWarna());
                      transaksiPembelian.addFlags(transaksiPembelian.FLAG_ACTIVITY_NEW_TASK);
 
                      context.startActivity(transaksiPembelian);
+                     ((Activity)context).finish();
                  }
                 }
             });

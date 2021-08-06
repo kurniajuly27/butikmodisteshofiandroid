@@ -41,7 +41,7 @@ public class Beranda extends AppCompatActivity {
     }
 
     public void riwayatpembelian(View view) {
-        Intent intent = new Intent(Beranda.this, RiwayatPembelian.class);
+        Intent intent = new Intent(Beranda.this, LihatRiwayatPembelian.class);
 
         Beranda.this.startActivity(intent);
 

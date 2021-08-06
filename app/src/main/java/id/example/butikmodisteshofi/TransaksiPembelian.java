@@ -1,6 +1,8 @@
 package id.example.butikmodisteshofi;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import id.example.butikmodisteshofi.Utility.PrefManager;
 import id.example.butikmodisteshofi.api.ApiEndPoint;
 import id.example.butikmodisteshofi.api.ApiRetrofit;
 import id.example.butikmodisteshofi.model.DataItem;
@@ -11,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,7 +41,9 @@ public class TransaksiPembelian extends AppCompatActivity {
 
     int idPenjualan;
     int idBarang;
-
+    int harga,stok;
+    int total, updateStok;
+    int idPelanggan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,9 @@ public class TransaksiPembelian extends AppCompatActivity {
         warna = getIntent().getExtras().getString("warna");
 
         idBarang = getIntent().getExtras().getInt("id");
+        harga = getIntent().getExtras().getInt("harga");
+        stok = getIntent().getExtras().getInt("stok");
+
 
         namaBarangEt = findViewById(R.id.txt_nama_barang);
         ukuranEt = findViewById(R.id.txt_ukuran);
@@ -59,12 +67,8 @@ public class TransaksiPembelian extends AppCompatActivity {
         namaBarangEt.setText(namaBarang);
         ukuranEt.setText(ukuran);
         warnaEt.setText(warna);
-
-
-
-//        if (!"".equals(value)){
-//        }
-
+        PrefManager prefManager = new PrefManager(getApplicationContext());
+        idPelanggan = prefManager.getInt("idpelanggan");
         btnBeli = (Button)findViewById(R.id.btn_beli);
 
         klik();
@@ -99,13 +103,63 @@ public class TransaksiPembelian extends AppCompatActivity {
                                     String value = jumlahET.getText().toString();
                                     jumlah = Integer.parseInt(value);
 
+
+//                                    Call<ResponseAllBarang> responseIdBarang = apiEndPoint.getBarangId(idBarang);
+//                                    responseIdBarang.enqueue(new Callback<ResponseAllBarang>() {
+//                                        @Override
+//                                        public void onResponse(Call<ResponseAllBarang> call, Response<ResponseAllBarang> response) {
+//                                            harga = response.body().getData().get(0).getHarga();
+//                                        }
+//                                        @Override
+//                                        public void onFailure(Call<ResponseAllBarang> call, Throwable t) {
+//
+//                                        }
+//                                    });
+
+
+                                    total = harga * jumlah;
+                                    updateStok = stok - jumlah;
+                                    DataItem ditem = new DataItem();
+                                    ditem.setStokBarang(updateStok);
+                                    ditem.setHarga(harga);
+
+
+                                    Call<ResponseAllBarang> responseAllBarang = apiEndPoint.updateHargaBarang(idBarang ,ditem);
+                                    responseAllBarang.enqueue(new Callback<ResponseAllBarang>() {
+                                        @Override
+                                        public void onResponse(Call<ResponseAllBarang> call, Response<ResponseAllBarang> response) {
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<ResponseAllBarang> call, Throwable t) {
+
+                                        }
+                                    });
+
+                                    ditem.setTotal(total);
+
+                                    Call<ResponseAllPenjualan> responseAllPenjualan = apiEndPoint.updateTotalPenjualan(idPenjualan ,ditem);
+                                    responseAllPenjualan.enqueue(new Callback<ResponseAllPenjualan>() {
+                                        @Override
+                                        public void onResponse(Call<ResponseAllPenjualan> call, Response<ResponseAllPenjualan> response) {
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<ResponseAllPenjualan> call, Throwable t) {
+
+                                        }
+                                    });
+
                                     Call<ResponseAllDetailPenjualan> responseAllDetailPenjualanCall = apiEndPoint.
-                                            setDetailPenjualan(idPenjualan,1,idBarang,jumlah,jumlah);
+                                            setDetailPenjualan(idPenjualan,idPelanggan,idBarang,jumlah,total);
 
                                     responseAllDetailPenjualanCall.enqueue(new Callback<ResponseAllDetailPenjualan>() {
                                         @Override
                                         public void onResponse(Call<ResponseAllDetailPenjualan> call, Response<ResponseAllDetailPenjualan> response) {
                                             if (response.isSuccessful()){
+                                                Intent intent = new Intent(getApplicationContext(), Barang.class);
+                                                startActivity(intent);
                                             }
                                         }
 
@@ -118,7 +172,11 @@ public class TransaksiPembelian extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), " masuk " + idPenjualan + " " +
                                                     idBarang + " " + jumlah
                                             , Toast.LENGTH_SHORT).show();
-
+                                    Intent intent = new Intent(getApplicationContext(), RiwayatPembelian.class);
+                                    intent.putExtra("id", idPenjualan);
+                                    intent.putExtra("total", total);
+                                    startActivity(intent);
+                                    finish();
                                     // sudah mendapatakan last id penjualan
                                 }
                             }

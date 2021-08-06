@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".Beranda"
     tools:openDrawer="start">
 
@@ -48,9 +49,9 @@
 
             <TextView
                 android:id="@+id/btn_barang"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="Barang"
@@ -66,13 +67,13 @@
                 android:src="@drawable/transaksi" />
 
             <TextView
-                android:id="@+id/btn_transaksi_pembelian"
-                android:layout_width="300dp"
+                android:id="@+id/btn_keranjang"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="Transaksi Pembelian"
+                android:text="Keranjang"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -86,9 +87,9 @@
 
             <TextView
                 android:id="@+id/btn_riwayat_pembelian"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="Riwayat Pembelian"

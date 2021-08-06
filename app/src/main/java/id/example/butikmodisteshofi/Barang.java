@@ -38,6 +38,7 @@ public class Barang extends AppCompatActivity {
             public void onResponse(Call<ResponseAllBarang> call, Response<ResponseAllBarang> response) {
                 List<DataItem> dataItems = response.body().getData();
                 recyclerView.setAdapter(new AdapterBarang(dataItems,R.layout.activity_barang,getApplicationContext()));
+
             }
 
             @Override
