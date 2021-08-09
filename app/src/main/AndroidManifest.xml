@@ -20,9 +20,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".DetailPenjualan" />
         <activity android:name=".LihatRiwayatPembelian" />
-        <activity android:name=".SplashActivity" />
+        <activity android:name=".Login" />
         <activity android:name=".TransaksiPembelian" />
-        <activity android:name=".Login">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

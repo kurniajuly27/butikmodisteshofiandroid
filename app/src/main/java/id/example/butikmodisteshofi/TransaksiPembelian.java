@@ -29,7 +29,7 @@ import java.util.List;
 public class TransaksiPembelian extends AppCompatActivity {
 
     String namaBarang, ukuran, warna;
-    int jumlah;
+    int jumlah, keranjang;
     Button btnBeli;
     EditText namaBarangEt, ukuranEt, warnaEt, jumlahET;
 
@@ -70,8 +70,88 @@ public class TransaksiPembelian extends AppCompatActivity {
         PrefManager prefManager = new PrefManager(getApplicationContext());
         idPelanggan = prefManager.getInt("idpelanggan");
         btnBeli = (Button)findViewById(R.id.btn_beli);
+        btnBeli = (Button)findViewById(R.id.btn_tambah);
 
         klik();
+        klikKeranjang();
+    }
+
+    public void klikKeranjang(){
+        btnBeli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ApiEndPoint apiEndPoint = ApiRetrofit.getclient().create(ApiEndPoint.class);
+                Call<ResponseAllPenjualan> pnj = apiEndPoint.getPenjualan();
+                pnj.enqueue(new Callback<ResponseAllPenjualan>() {
+                    @Override
+                    public void onResponse(Call<ResponseAllPenjualan> call, Response<ResponseAllPenjualan> response) {
+                        if (response.isSuccessful()) {
+                            List<DataItem> penjualan = response.body().getData();
+                            DataItem item = penjualan.get(penjualan.size() - 1);
+                            keranjang = item.getKeranjang();
+                            idPelanggan = item.getPelangganid();
+
+                            String value = jumlahET.getText().toString();
+                            jumlah = Integer.parseInt(value);
+
+
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseAllPenjualan> call, Throwable t) {
+
+                    }
+                });
+                
+                        Call<ResponseAllPenjualan> respon = apiEndPoint.getPenjualan();
+                        respon.enqueue(new Callback<ResponseAllPenjualan>() {
+                            @Override
+                            public void onResponse(Call<ResponseAllPenjualan> call, Response<ResponseAllPenjualan> response) {
+                                if (response.isSuccessful()) {
+                                    List<DataItem> penjualan = response.body().getData();
+                                    DataItem item = penjualan.get(penjualan.size() - 1);
+                                    keranjang = item.getKeranjang();
+                                    idPelanggan = item.getPelangganid();
+
+                                    String value = jumlahET.getText().toString();
+                                    jumlah = Integer.parseInt(value);
+
+                                    if (response.body().getData().get(keranjang).getKeranjang() == 1){
+                                        Call<ResponseAllDetailPenjualan> responseAllDetailPenjualanCall = apiEndPoint.
+                                                setDetailPenjualan(idPenjualan,idPelanggan,idBarang,jumlah,total);
+                                        responseAllDetailPenjualanCall.enqueue(new Callback<ResponseAllDetailPenjualan>() {
+                                            @Override
+                                            public void onResponse(Call<ResponseAllDetailPenjualan> call, Response<ResponseAllDetailPenjualan> response) {
+                                                if (response.isSuccessful()){
+
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<ResponseAllDetailPenjualan> call, Throwable t) {
+
+                                            }
+                                        });
+
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseAllPenjualan> call, Throwable t) {
+
+                            }
+                        });
+                        Intent intent = new Intent(getApplicationContext(), Barang.class);
+                        startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -103,7 +183,7 @@ public class TransaksiPembelian extends AppCompatActivity {
                                     String value = jumlahET.getText().toString();
                                     jumlah = Integer.parseInt(value);
 
-
+//
 //                                    Call<ResponseAllBarang> responseIdBarang = apiEndPoint.getBarangId(idBarang);
 //                                    responseIdBarang.enqueue(new Callback<ResponseAllBarang>() {
 //                                        @Override
@@ -128,6 +208,7 @@ public class TransaksiPembelian extends AppCompatActivity {
                                     responseAllBarang.enqueue(new Callback<ResponseAllBarang>() {
                                         @Override
                                         public void onResponse(Call<ResponseAllBarang> call, Response<ResponseAllBarang> response) {
+
                                         }
 
                                         @Override

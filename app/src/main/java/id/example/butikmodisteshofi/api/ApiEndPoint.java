@@ -55,6 +55,19 @@ public interface ApiEndPoint {
             @Field("total") int total
     );
 
+
+    @POST("api/penjualan")
+    @FormUrlEncoded
+    @Headers({
+            "Content-Type: application/x-www-form-urlencoded"
+    })
+    Call<ResponseAllPenjualan> setPenjualanTransaksi(
+            @Field("tanggal") String tanggal,
+            @Field("total") int total,
+            @Field("keranjang") int keranjang
+
+    );
+
     @POST("api/detailpenjualan")
     @FormUrlEncoded
     @Headers({

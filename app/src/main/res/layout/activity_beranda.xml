@@ -64,7 +64,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:onClick="transaksipembelian"
-                android:src="@drawable/transaksi" />
+                android:src="@drawable/keranjang1" />
 
             <TextView
                 android:id="@+id/btn_keranjang"
@@ -83,7 +83,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:onClick="riwayatpembelian"
-                android:src="@drawable/pembelian" />
+                android:src="@drawable/riwayat" />
 
             <TextView
                 android:id="@+id/btn_riwayat_pembelian"

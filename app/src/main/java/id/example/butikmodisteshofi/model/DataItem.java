@@ -74,6 +74,9 @@ public class DataItem{
 	@SerializedName("konfirmasi_password")
 	private String konfirmasi_password;
 
+	@SerializedName("keranjang")
+	private int keranjang;
+
 
 
 
@@ -185,6 +188,7 @@ public class DataItem{
 			",username = '" + user_name + '\'' +
 			",password = '" + password + '\'' +
 			",konfirmasi_password = '" + konfirmasi_password + '\'' +
+			",keranjang = '"+ keranjang + '\''+
 
 			"}";
 		}
@@ -268,4 +272,8 @@ public class DataItem{
 	public String getKonfirmasi__password() { return konfirmasi_password; }
 
 	public void setKonfirmasi_password(String konfirmasi_password) { this.konfirmasi_password = konfirmasi_password; }
+
+	public int getKeranjang() { return keranjang; }
+
+	public void setKeranjang(int keranjang) { this.keranjang = keranjang; }
 }
